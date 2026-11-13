@@ -2,11 +2,18 @@
 
 按年级和学科整理 B 站学习视频，在应用里直接播放。
 
+[![License: GPL-3.0-or-later](https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg)](LICENSE)
+![Version](https://img.shields.io/badge/version-0.1.0-black)
+![Platform](https://img.shields.io/badge/platform-Web%20%7C%20iPad%20%7C%20Android-black)
+![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)
+![SwiftUI](https://img.shields.io/badge/SwiftUI-iPad-0075FF?logo=swift&logoColor=white)
+![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-Android-3DDC84?logo=android&logoColor=white)
+
 从 B 站搜索中小学学习视频，按「年级 → 学科 → 册次」归类；大模型再判断一遍哪套课讲得好、适合什么程度，给出一句批注；课程按课本章节分成一节一节，支持倍速、续播、记录看到哪里。学习进度和收藏用你自己的 WebDAV 网盘在多台设备之间同步（做法和 Montage 一样）。
 
 三端都已做出：网页原型、iPad 版（SwiftUI）、Android 版（Jetpack Compose）。
 
-> **自用项目。** B 站的接口没有公开文档，服务条款也限制第三方客户端；课程大多是搬运的，版权归属于原 UP 主。自己用、家用没问题，要上架应用商店请先评估法律风险。内容版权的详细说明见 [NOTICE.md](NOTICE.md)。
+> 本项目与 B 站没有隶属或官方关联。B 站的接口没有公开文档，服务条款也限制第三方客户端，接口随时可能变化；课程大多是搬运的，版权归属于原 UP 主。自己用、家用没问题，要上架应用商店请先评估法律风险。内容版权的详细说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 ## 快速上手
 
@@ -37,12 +44,19 @@ python3 server.py
 | `ios/` | iPad 版（SwiftUI），见下文「iPad 版和 Android 版」 |
 | `android/` | Android 版（Kotlin + Jetpack Compose） |
 | `docs/sync-format.md`、`docs/sync-cases.json` | 多端同步格式，以及网页、iPad、Android 共用的合并测试用例 |
+| `CHANGELOG.md` | 每个版本的变更明细 |
+| `THIRD_PARTY_NOTICES.md` | 参考过的项目、随仓库分发的第三方内容和版权归属 |
+| `.github/workflows/ci.yml` | 每次推送跑：入库内容检查（拒绝密钥文件、本机路径、公司信息）、同步合并用例、Android 单元测试 |
 
 ## 名字和界面
 
 应用叫「随堂」。界面按一间教室来设计：左侧年级栏是一块黑板，右侧内容铺在作业本的纸面上；学科做成搁板上的一排书脊，当前学科的书脊顶端夹一条粉笔黄书签；当前年级在黑板上的田字格里填粉笔黄；看完的节用红笔打勾。整套界面只有黑板绿 `#1F5C47` 和红笔红 `#C23B2B` 两种强色，其余是纸、墨和浅绿。
 
-三端（网页、iPad、Android）的颜色值、圆角、线宽相同，尺寸按屏幕调整：网页和 iPad 的年级栏宽 200，Android 用顶栏加底部导航。颜色、字体、标志和每个组件的数值写在 `designs/brand/README.md`，代码里分别在 `web/app.css`、`ios/BiliStudy/UI/Theme.swift`、`android/.../ui/Theme.kt`，改的时候三处一起改。图标源文件在 `designs/brand/`。iPad 和 Android 的设计稿在 `designs/learning-videos/project/`，8 张画板（iPad 6 张、Android 2 张），用 claude-design 打开。
+![设计稿画布：iPad 6 张、Android 2 张](docs/assets/design-canvas.png)
+
+<sub>设计稿画布全览（iPad 6 张、Android 2 张），三端都按它实现，用 claude-design 打开可交互。</sub>
+
+三端（网页、iPad、Android）的颜色值、圆角、线宽相同，尺寸按屏幕调整：网页和 iPad 的年级栏宽 200，Android 用顶栏加底部导航。颜色、字体、标志和每个组件的数值写在 `designs/brand/README.md`，代码里分别在 `web/app.css`、`ios/BiliStudy/UI/Theme.swift`、`android/.../ui/Theme.kt`，改的时候三处一起改。图标源文件在 `designs/brand/`。
 
 ## 同类产品
 
@@ -419,6 +433,6 @@ cd android && ./gradlew :app:assembleDebug
 
 ## 协议
 
-代码、界面设计和文档用 [MIT 协议](LICENSE)开源，随便用、改、分发，保留版权声明即可。
+代码、界面设计和文档以 [GPL-3.0-or-later](LICENSE) 协议开源：使用、修改、分发都自由，但分发时（含网络服务）必须同样以 GPL-3.0-or-later 开源你的修改版本并保留版权声明。版本变更记录见 [CHANGELOG](CHANGELOG.md)。
 
-B 站视频、视频封面、UP 主名称的版权属于各自的作者，不在协议范围内，详见 [NOTICE.md](NOTICE.md)。
+B 站视频、视频封面、UP 主名称的版权属于各自的作者，不在协议范围内；参考过的项目和随仓库分发的第三方内容逐项记录在 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
