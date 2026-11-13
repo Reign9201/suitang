@@ -19,15 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-关于内容版权的说明
-
-本协议只覆盖本仓库里的代码、界面设计和文档。B 站上的视频、视频封面、UP 主
-名称等内容的版权属于各自的作者，不在本协议范围内。应用运行时只调用 B 站的
-公开接口取回这些内容供播放，不存储、不再分发，也不用于商业用途。
-
-`designs/learning-videos/project/assets/` 里有几张 B 站视频封面的缩略图，
-只用于让设计稿在设计工具里显示真实效果，方便核对排版，版权属于各自的 UP 主。
-如果要拿这份设计稿做别的事情，请把这些图片换掉。
