@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 随堂图标前景：粉笔白田字格 + 粉笔黄播放键，由 designs/brand/icon.svg 换算到 108dp 画布 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:pathData="M29.0,29.0H79.0V79.0H29.0Z"
+        android:strokeColor="#F4F0E3" android:strokeWidth="2.41" android:strokeLineJoin="round" android:fillColor="#00000000" />
+    <path android:pathData="M54,32.45V34.69M54,36.76V39.0M54,41.07V43.31M54,45.38V47.62M54,49.69V51.93M54,54.0V56.24M54,58.31V60.55M54,62.62V64.86M54,66.93V69.17M54,71.24V73.48M32.45,54H34.69M36.76,54H39.0M41.07,54H43.31M45.38,54H47.62M49.69,54H51.93M54.0,54H56.24M58.31,54H60.55M62.62,54H64.86M66.93,54H69.17M71.24,54H73.48"
+        android:strokeColor="#8CF4F0E3" android:strokeWidth="1.03" android:strokeLineCap="round" />
+    <path android:pathData="M48.83,44.34L48.83,63.66L65.55,54.0Z"
+        android:fillColor="#F4C24D" android:strokeColor="#F4C24D" android:strokeWidth="4.48" android:strokeLineJoin="round" />
+</vector>

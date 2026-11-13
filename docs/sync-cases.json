@@ -1,0 +1,51 @@
+{
+  "now": 1762912800000,
+  "cases": [
+    {
+      "name": "同一个键取最新的那份",
+      "sets": [
+        { "items": { "a": { "at": 1762912000100, "data": "old" } }, "removals": {} },
+        { "items": { "a": { "at": 1762912000200, "data": "new" } }, "removals": {} }
+      ],
+      "expected": { "items": { "a": { "at": 1762912000200, "data": "new" } }, "removals": {} }
+    },
+    {
+      "name": "删除晚于最新修改：删掉并保留墓碑",
+      "sets": [
+        { "items": { "a": { "at": 1762912000100, "data": 1 } }, "removals": {} },
+        { "items": {}, "removals": { "a": 1762912000150 } }
+      ],
+      "expected": { "items": {}, "removals": { "a": 1762912000150 } }
+    },
+    {
+      "name": "删除之后又在别的设备上重新收藏：保留，墓碑作废",
+      "sets": [
+        { "items": {}, "removals": { "a": 1762912000150 } },
+        { "items": { "a": { "at": 1762912000300, "data": 1 } }, "removals": {} }
+      ],
+      "expected": { "items": { "a": { "at": 1762912000300, "data": 1 } }, "removals": {} }
+    },
+    {
+      "name": "超过 180 天的删除记录被忘掉",
+      "sets": [
+        { "items": {}, "removals": { "old": 1000, "recent": 1762900000000 } }
+      ],
+      "expected": { "items": {}, "removals": { "recent": 1762900000000 } }
+    },
+    {
+      "name": "读文件的顺序不影响结果",
+      "sets": [
+        { "items": { "b": { "at": 1762912000500, "data": "b2" } }, "removals": { "a": 1762912000400 } },
+        { "items": { "a": { "at": 1762912000300, "data": "a1" }, "b": { "at": 1762912000200, "data": "b1" } }, "removals": {} }
+      ],
+      "expected": { "items": { "b": { "at": 1762912000500, "data": "b2" } }, "removals": { "a": 1762912000400 } }
+    },
+    {
+      "name": "相同时间的修改和删除：删除优先",
+      "sets": [
+        { "items": { "a": { "at": 1762912000100, "data": 1 } }, "removals": { "a": 1762912000100 } }
+      ],
+      "expected": { "items": {}, "removals": { "a": 1762912000100 } }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>iPad 首次打开</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{color:#1C2B26;text-decoration:none}a:hover{color:#1C2B26}
+</style>
+</helmet>
+<div style="width: 1180px; height: 820px; box-sizing: border-box; padding: 96px 120px; display: flex; flex-direction: column; gap: 36px; background: #F3F6F3; color: #1C2B26; font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', sans-serif">
+  <div style="display: flex; flex-direction: column; gap: 22px">
+    <div style="display: flex; align-items: center; gap: 14px">
+      <svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64">
+        <defs>
+          <linearGradient id="logo" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#23674F"/><stop offset="1" stop-color="#174836"/>
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="15" fill="url(#logo)"/>
+        <g transform="translate(11.3 11.3) scale(0.646)">
+          <rect x="4" y="4" width="56" height="56" rx="1.5" fill="none" stroke="#F4F0E3" stroke-width="3"/>
+          <g stroke="#F4F0E3" stroke-opacity=".55" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="2.5 2.3">
+            <line x1="32" y1="8.5" x2="32" y2="55.5"/><line x1="8.5" y1="32" x2="55.5" y2="32"/>
+          </g>
+          <path d="M26.2 21.2 L26.2 42.8 L44.9 32 Z" fill="#F4C24D" stroke="#F4C24D" stroke-width="5" stroke-linejoin="round"/>
+        </g>
+      </svg>
+      <span style="font-family: 'Kaiti SC', STKaiti, KaiTi, serif; font-size: 32px; line-height: 1; letter-spacing: 3px">随堂</span>
+    </div>
+    <h1 style="margin: 0; font-family: 'Kaiti SC', STKaiti, KaiTi, serif; font-size: 44px; font-weight: 400; line-height: 1.2">你在读几年级？</h1>
+  </div>
+  <sc-for list="{{stages}}" as="stage" hint-placeholder-count="3">
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <span style="font-size: 14px; font-weight: 500; color: #52605A; letter-spacing: 1.4px">{{stage.name}}</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px">
+        <sc-for list="{{stage.grades}}" as="g" hint-placeholder-count="3">
+          <a href="Main.dc.html" aria-label="{{g.name}}" style="{{g.style}}">{{g.short}}</a>
+        </sc-for>
+      </div>
+    </div>
+  </sc-for>
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; font-size: 14px; color: #52605A">
+    <span>之后随时可以在左侧换年级。在别的设备上用过？</span>
+    <a href="Settings.dc.html" style="min-height: 44px; display: flex; align-items: center; font-weight: 500; color: #1F5C47; text-decoration: underline; text-decoration-color: #A9CBB9; text-underline-offset: 4px">登录网盘，接着上次的进度学</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1180,"height":820}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var kai = "'Kaiti SC', STKaiti, KaiTi, serif";
+    // 纸面上的田字格：浅绿线条、白底
+    function cell(short, name) {
+      return {
+        short: short, name: name,
+        style: 'width: 84px; height: 84px; display: flex; align-items: center; justify-content: center; box-sizing: border-box;' +
+          ' border: 1.5px solid #A9CBB9; border-radius: 4px; background-color: #FFFFFF;' +
+          ' background-image: repeating-linear-gradient(90deg, #A9CBB9 0 4px, transparent 4px 8px), repeating-linear-gradient(0deg, #A9CBB9 0 4px, transparent 4px 8px);' +
+          ' background-size: 100% 1px, 1px 100%; background-position: center; background-repeat: no-repeat;' +
+          ' font-family: ' + kai + '; font-size: ' + (short.length > 1 ? '30px' : '42px') + '; line-height: 1; color: #1C2B26'
+      };
+    }
+    return {
+      stages: [
+        { name: '小学', grades: [cell('一', '一年级'), cell('二', '二年级'), cell('三', '三年级'), cell('四', '四年级'), cell('五', '五年级'), cell('六', '六年级')] },
+        { name: '初中', grades: [cell('七', '七年级'), cell('八', '八年级'), cell('九', '九年级')] },
+        { name: '高中', grades: [cell('高一', '高一'), cell('高二', '高二'), cell('高三', '高三')] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+# 大模型配置：含密钥，只提交 config.example.json
+config.json
+
+# 网页原型缓存和测试产物
+cache/
+.playwright-mcp/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/.kotlin/
+android/local.properties
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# iPad
+ios/build/
+ios/DerivedData/
+ios/BiliStudy.xcodeproj/project.xcworkspace/xcuserdata/
+ios/BiliStudy.xcodeproj/xcuserdata/
+ios/*.xcworkspace/xcuserdata/
+*.xcuserstate
+.DS_Store

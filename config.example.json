@@ -1,0 +1,19 @@
+{
+  "ai": {
+    "enabled": true,
+    "api_key": "",
+    "auth_token": "",
+    "base_url": "",
+    "organize_model": "claude-opus-5-5",
+    "intent_model": "claude-opus-5-5",
+    "effort": "low",
+    "organize_max_tokens": 8000,
+    "intent_max_tokens": 2000,
+    "batch_size": 10,
+    "concurrency": 4,
+    "timeout_seconds": 120,
+    "max_retries": 2,
+    "fallbacks": "auto",
+    "json_mode": "auto"
+  }
+}

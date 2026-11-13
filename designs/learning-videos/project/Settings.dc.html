@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>iPad 设置</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{color:#1C2B26;text-decoration:none}a:hover{color:#1C2B26}
+summary::-webkit-details-marker{display:none}
+details[open]>summary svg{transform:rotate(90deg)}
+</style>
+</helmet>
+<div style="width: 1180px; height: 820px; display: flex; overflow: hidden; background: #F3F6F3; color: #1C2B26; font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', sans-serif">
+  <nav aria-label="年级" style="width: 200px; flex: none; box-sizing: border-box; padding: 26px 22px 20px; background: radial-gradient(120% 60% at 20% 0%, rgba(255,255,255,0.07), transparent 60%), #1F5C47; color: #F4F0E3; display: flex; flex-direction: column; gap: 24px">
+    <a href="Main.dc.html" aria-label="随堂 首页" style="display: flex; align-items: center; gap: 10px; color: #F4F0E3">
+      <svg aria-hidden="true" width="36" height="36" viewBox="0 0 64 64">
+        <rect x="4" y="4" width="56" height="56" rx="1.5" fill="none" stroke="#F4F0E3" stroke-width="3"/>
+        <g stroke="#F4F0E3" stroke-opacity=".55" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="2.5 2.3">
+          <line x1="32" y1="8.5" x2="32" y2="55.5"/><line x1="8.5" y1="32" x2="55.5" y2="32"/>
+        </g>
+        <path d="M26.2 21.2 L26.2 42.8 L44.9 32 Z" fill="#F4C24D" stroke="#F4C24D" stroke-width="5" stroke-linejoin="round"/>
+      </svg>
+      <span style="font-family: 'Kaiti SC', STKaiti, KaiTi, serif; font-size: 30px; line-height: 1; letter-spacing: 2px">随堂</span>
+    </a>
+    <sc-for list="{{stages}}" as="stage" hint-placeholder-count="3">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 13px; font-weight: 500; color: rgba(244,240,227,0.74); letter-spacing: 1.5px">{{stage.name}}</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 46px); gap: 9px">
+          <sc-for list="{{stage.grades}}" as="g" hint-placeholder-count="3">
+            <a href="Main.dc.html" aria-label="{{g.name}}" style="{{g.style}}">{{g.short}}</a>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+    <div style="flex: 1"></div>
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <a href="Mine.dc.html" style="height: 44px; display: flex; align-items: center; gap: 10px; padding: 0 12px; margin: 0 -12px; border-radius: 12px; font-size: 15px; color: #F4F0E3">
+        <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(244,240,227,0.74)" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3.5h12v17l-6-4.2-6 4.2z"/></svg>
+        我的
+      </a>
+      <a href="Settings.dc.html" aria-current="page" style="height: 44px; display: flex; align-items: center; gap: 10px; padding: 0 12px; margin: 0 -12px; border-radius: 12px; font-size: 15px; font-weight: 600; color: #F4F0E3; background: rgba(255,255,255,0.12)">
+        <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F4C24D" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>
+        设置
+      </a>
+    </div>
+  </nav>
+
+  <main style="flex: 1; min-width: 0; box-sizing: border-box; padding: 26px 34px 0; overflow: hidden">
+    <h1 style="margin: 0; font-family: 'Kaiti SC', STKaiti, KaiTi, serif; font-size: 30px; font-weight: 400; line-height: 1.2">设置</h1>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 20px; align-items: start">
+
+      <section aria-labelledby="sync-h" style="display: flex; flex-direction: column; gap: 14px; padding: 22px; border-radius: 18px; background: #FFFFFF; box-shadow: 0 1px 2px rgba(28,43,38,0.05), 0 6px 18px rgba(28,43,38,0.07)">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <h2 id="sync-h" style="margin: 0; font-family: 'Kaiti SC', STKaiti, KaiTi, serif; font-size: 22px; font-weight: 400">多端同步</h2>
+          <span style="font-size: 13px; color: #52605A">{{syncStatus}}</span>
+        </div>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">WebDAV 地址
+          <input value="https://dav.jianguoyun.com/dav/" style="height: 46px; box-sizing: border-box; padding: 0 14px; border: 1px solid #E2E8E4; border-radius: 12px; background: #F8FAF8; font: inherit; font-weight: 400; font-size: 15px; color: #1C2B26">
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">账号
+          <input value="[你的坚果云邮箱]" style="height: 46px; box-sizing: border-box; padding: 0 14px; border: 1px solid #E2E8E4; border-radius: 12px; background: #F8FAF8; font: inherit; font-weight: 400; font-size: 15px; color: #1C2B26">
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">应用密码
+          <input type="password" value="examplepassword" style="height: 46px; box-sizing: border-box; padding: 0 14px; border: 1px solid #E2E8E4; border-radius: 12px; background: #F8FAF8; font: inherit; font-weight: 400; font-size: 15px; color: #1C2B26">
+          <span style="font-weight: 400; font-size: 13px; line-height: 1.5; color: #52605A">坚果云在网页版「账户信息 → 安全选项 → 第三方应用管理」生成，不是登录密码</span>
+        </label>
+        <span style="font-size: 13px; line-height: 1.5; color: #52605A">同步收藏、学习进度、最近在学，以及选过的年级和课本版本</span>
+        <div style="display: flex; gap: 10px">
+          <button onClick="{{saveSync}}" style="height: 44px; padding: 0 20px; box-sizing: border-box; border: 1.5px solid #1F5C47; border-radius: 12px; background: #1F5C47; font: inherit; font-size: 15px; font-weight: 500; color: #FFFFFF; cursor: pointer">保存并同步</button>
+          <button onClick="{{stopSync}}" style="height: 44px; padding: 0 16px; box-sizing: border-box; border: 0; border-radius: 12px; background: transparent; font: inherit; font-size: 15px; color: #52605A; cursor: pointer">停止同步</button>
+        </div>
+      </section>
+
+      <section aria-labelledby="ai-h" style="display: flex; flex-direction: column; gap: 14px; padding: 22px; border-radius: 18px; background: #FFFFFF; box-shadow: 0 1px 2px rgba(28,43,38,0.05), 0 6px 18px rgba(28,43,38,0.07)">
+        <div style="display: flex; align-items: center; gap: 12px; min-height: 44px">
+          <h2 id="ai-h" style="margin: 0; font-family: 'Kaiti SC', STKaiti, KaiTi, serif; font-size: 22px; font-weight: 400; flex: 1">大模型整理</h2>
+          <button onClick="{{toggleAi}}" role="switch" aria-checked="{{aiOnAttr}}" aria-label="用大模型整理课程" style="width: 60px; height: 44px; flex: none; padding: 0; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer">
+            <span style="{{trackStyle}}"><span style="{{knobStyle}}"></span></span>
+          </button>
+        </div>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">接口地址
+          <input value="https://open.bigmodel.cn/api/anthropic" style="height: 46px; box-sizing: border-box; padding: 0 14px; border: 1px solid #E2E8E4; border-radius: 12px; background: #F8FAF8; font: inherit; font-weight: 400; font-size: 15px; color: #1C2B26">
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">密钥
+          <input type="password" value="examplekey" style="height: 46px; box-sizing: border-box; padding: 0 14px; border: 1px solid #E2E8E4; border-radius: 12px; background: #F8FAF8; font: inherit; font-weight: 400; font-size: 15px; color: #1C2B26">
+          <span style="font-weight: 400; font-size: 13px; color: #52605A">只存在本机钥匙串，不会同步到网盘</span>
+        </label>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">整理用模型
+            <input value="glm-5.3" style="height: 46px; box-sizing: border-box; padding: 0 14px; border: 1px solid #E2E8E4; border-radius: 12px; background: #F8FAF8; font: inherit; font-weight: 400; font-size: 15px; color: #1C2B26">
+          </label>
+          <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">搜索解析用模型
+            <input value="glm-5.3" style="height: 46px; box-sizing: border-box; padding: 0 14px; border: 1px solid #E2E8E4; border-radius: 12px; background: #F8FAF8; font: inherit; font-weight: 400; font-size: 15px; color: #1C2B26">
+          </label>
+        </div>
+        <details style="font-size: 14px">
+          <summary style="height: 44px; display: flex; align-items: center; gap: 6px; cursor: pointer; color: #1C2B26; list-style: none">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            高级选项
+          </summary>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-bottom: 4px">
+            <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 500">鉴权方式
+              <select style="height: 46px; box-sizing: border-box; padding: 0 10px; border: 1px solid #E2E8E4; border-radius: 12px; background: #F8FAF8; font: inherit; font-weight: 400; color: #1C2B26"><option>Bearer 令牌</option><option>API Key</option></select>
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 500">思考强度
+              <select style="height: 46px; box-sizing: border-box; padding: 0 10px; border: 1px solid #E2E8E4; border-radius: 12px; background: #F8FAF8; font: inherit; font-weight: 400; color: #1C2B26"><option>low</option><option>medium</option><option>high</option><option>不传</option></select>
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 500">取结果方式
+              <select style="height: 46px; box-sizing: border-box; padding: 0 10px; border: 1px solid #E2E8E4; border-radius: 12px; background: #F8FAF8; font: inherit; font-weight: 400; color: #1C2B26"><option>自动</option><option>结构化输出</option><option>工具调用</option><option>提示词</option></select>
+            </label>
+          </div>
+        </details>
+        <div style="display: flex; align-items: center; gap: 12px">
+          <button onClick="{{testAi}}" style="height: 44px; padding: 0 20px; box-sizing: border-box; border: 1.5px solid #E2E8E4; border-radius: 12px; background: #FFFFFF; font: inherit; font-size: 15px; font-weight: 500; color: #1C2B26; cursor: pointer">测试连接</button>
+          <span style="font-size: 13px; color: #52605A">{{aiResult}}</span>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1180,"height":820}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { ai: true, tested: false, sync: 'on' };
+  }
+  renderVals() {
+    var self = this;
+    var kai = "'Kaiti SC', STKaiti, KaiTi, serif";
+    function cell(short, name) {
+      var line = 'rgba(244,240,227,0.5)';
+      return {
+        short: short, name: name,
+        style: 'width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; box-sizing: border-box;' +
+          ' border: 1.5px solid ' + line + '; border-radius: 3px; background-color: transparent;' +
+          ' background-image: repeating-linear-gradient(90deg, ' + line + ' 0 3px, transparent 3px 6px), repeating-linear-gradient(0deg, ' + line + ' 0 3px, transparent 3px 6px);' +
+          ' background-size: 100% 1px, 1px 100%; background-position: center; background-repeat: no-repeat;' +
+          ' font-family: ' + kai + '; font-size: ' + (short.length > 1 ? '17px' : '24px') + '; line-height: 1; color: #F4F0E3'
+      };
+    }
+    var on = this.state.ai;
+    return {
+      stages: [
+        { name: '小学', grades: [cell('一', '一年级'), cell('二', '二年级'), cell('三', '三年级'), cell('四', '四年级'), cell('五', '五年级'), cell('六', '六年级')] },
+        { name: '初中', grades: [cell('七', '七年级'), cell('八', '八年级'), cell('九', '九年级')] },
+        { name: '高中', grades: [cell('高一', '高一'), cell('高二', '高二'), cell('高三', '高三')] }
+      ],
+      syncStatus: this.state.sync === 'on' ? '已登录 dav.jianguoyun.com，上次同步 今天 10:42' : '未登录，学习记录只保存在这台设备上',
+      saveSync: function () { self.setState({ sync: 'on' }); },
+      stopSync: function () { self.setState({ sync: 'off' }); },
+      aiOnAttr: on ? 'true' : 'false',
+      toggleAi: function () { self.setState({ ai: !self.state.ai }); },
+      trackStyle: 'position: relative; display: block; width: 52px; height: 32px; border-radius: 16px; background: ' + (on ? '#1F5C47' : '#A9B4AE'),
+      knobStyle: 'position: absolute; top: 3px; left: ' + (on ? '23px' : '3px') + '; width: 26px; height: 26px; border-radius: 13px; background: #FFFFFF; box-shadow: 0 1px 2px rgba(0,0,0,0.2)',
+      testAi: function () { self.setState({ tested: true }); },
+      aiResult: this.state.tested ? '连接正常：glm-5.3，搜索解析用时 5.3 秒（八年级 物理）' : (on ? '' : '关闭后只按标题规则归类')
+    };
+  }
+}
+</script>
+</body>
+</html>

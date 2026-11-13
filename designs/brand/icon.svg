@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- 随堂 App 图标：黑板绿底，粉笔白田字格，粉笔黄播放键。整幅铺满，圆角交给系统裁切 -->
+  <defs>
+    <linearGradient id="board" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#23674F"/>
+      <stop offset="1" stop-color="#174836"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#board)"/>
+  <rect x="222" y="222" width="580" height="580" rx="12" fill="none" stroke="#F4F0E3" stroke-width="28"/>
+  <g stroke="#F4F0E3" stroke-opacity=".55" stroke-width="12" stroke-linecap="round" stroke-dasharray="26 24">
+    <line x1="512" y1="262" x2="512" y2="762"/>
+    <line x1="262" y1="512" x2="762" y2="512"/>
+  </g>
+  <path d="M452 400 L452 624 L646 512 Z" fill="#F4C24D" stroke="#F4C24D" stroke-width="52" stroke-linejoin="round"/>
+</svg>
