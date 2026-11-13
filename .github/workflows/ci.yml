@@ -34,7 +34,8 @@ jobs:
       - uses: actions/checkout@v5
       - name: 拒绝本机路径与公司信息
         run: |
-          leaked=$(git grep -nIie 'zepp' -e '/Users/[a-z0-9_]+' -- . || true)
+          # 正则用字符类断开自匹配，避免命中本文件里的模式文本
+          leaked=$(git grep -nIiE '[z]epp|/User[s]/[a-z0-9_]+' -- . || true)
           if [ -n "$leaked" ]; then
             echo "::error::发现不该入库的本机信息（公司名、本机路径）："
             printf '%s\n' "$leaked"
